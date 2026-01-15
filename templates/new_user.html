@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+<h2>NEW USERS PAGE</h2>
+<p>her you can create your new acount</p>
+<div>
+    <form method="post" action="/new_user">
+        <label>inter your name</label>
+        <input type="text" name="new_user_name" placeholder="what should we call you" required autofocus>
+        <br>
+        <label>inter your email</label>
+        <input type="email" name="new_user_email" placeholder="what is your email" required>
+        <br>
+        <label>your password</label>
+        <input type="password" name="new_user_password" placeholder="DO NOT FORGET IT" required>
+        <br>
+        <br>
+        <button type="submit">CREATE</button>
+        <br>
+    </form>
+</div>
+<p>{{ user_already_exists }}</p>
+{% endblock %}

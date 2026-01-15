@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>SMART TASK MANAGER</h1>
+<h2>YOUR TASKS PAGE</h2>
+<div>
+    <form method="post" action="/show">
+        <label for="">ADD</label>
+        <input type="text" name="add" id="1" placeholder="add a task">
+        <br>
+        <label for="">UPDATE</label>
+        <input type="text" name="old_update" id="3" placeholder="inter the name of the task">
+        <input type="text" name="new_update" id="4" placeholder="inter the new name">
+        <br>
+        <label for="">DELETE</label>
+        <input type="text" name="delete" id="5" placeholder="inter the name of the task">
+        <br>
+        <button type="submit">SAVE</button>
+        <a href="{{ url_for ('display')}}">go to display page -></a>
+    </form>
+</div>
+{% if sure %}
+your password {{sure}}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'task.css')}}">
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>SMART TASK MANAGER</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li><a href="{{url_for('show_page')}}">SHOW PAGE</a></li>
+                <li><a href="{{url_for ('display')}}">DISPLAY TASK</a></li>
+                <li><a href="{{url_for ('new_user')}}">NEW USER</a></li>
+                <li><a href="{{url_for ('login')}}">LOGOUT</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>
