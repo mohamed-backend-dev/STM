@@ -102,3 +102,4 @@ def display():
     return render_template("display.html", all_tasks = all_tasks)
 if __name__ == "__main__":
     smart_task_manager.run(debug=True,host="0.0.0.0",port=5000)
+    #first commit
