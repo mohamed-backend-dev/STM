@@ -20,4 +20,4 @@ if (deleteInput) {
         }
     });
 }
-// 
+

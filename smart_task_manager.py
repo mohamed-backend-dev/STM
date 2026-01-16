@@ -77,15 +77,13 @@ def new_user():
 @smart_task_manager.route("/show", methods = ["GET", "POST"])
 def show_page():
     if "user_password" not in session :
-        return redirect("/")
-    sure = None 
+        return redirect("/") 
     user_password =session["user_password"]
     if request.method == "POST":
         add = request.form["add"]
         new_update = request.form["new_update"]
         old_update = request.form["old_update"]
         delete = request.form["delete"]
-        sure = "yes in post if"
         if add :
             date = datetime.datetime.now()
             time = date.strftime("%Y-%m-%d")
@@ -104,7 +102,7 @@ def show_page():
             cr = db.cursor()
             cr.execute(f"delete from tasks where user_tasks = '{delete}'")
             db.commit()
-    return render_template("show.html", sure = sure)
+    return render_template("show.html")
 @smart_task_manager.route("/display")
 def display():
     if "user_password" not in session :
@@ -117,7 +115,8 @@ def display():
     db.commit()
     return render_template("display.html", all_tasks = all_tasks)
 if __name__ == "__main__":
-    smart_task_manager.run()
+    port = int(os.environ.get("PORT", 10000))
+    smart_task_manager.run(host="0.0.0.0", port=port)
     #first commit
     #new commit
     #who is my code
