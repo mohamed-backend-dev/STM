@@ -12,7 +12,8 @@ db_path = os.path.join(db_dir, "data_base")
 # إنشاء الفولدر إذا لم يكن موجودًا
 os.makedirs(db_path, exist_ok=True)
 
-task_db = os.path.join(db_path, "task.db")  
+task_db = os.path.join(db_path, "task.db") 
+
 
 def make_the_data_base():
    db = sqlite3.connect(task_db)
