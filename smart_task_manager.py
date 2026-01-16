@@ -3,9 +3,17 @@ import sqlite3
 import datetime
 import os
 # make the data base
+import os
+import sqlite3
+
 db_dir = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(db_dir, "data_base")
-task_db = os.path.join(db_path, "task.db")
+
+# إنشاء الفولدر إذا لم يكن موجودًا
+os.makedirs(db_path, exist_ok=True)
+
+task_db = os.path.join(db_path, "task.db")  
+
 def make_the_data_base():
    db = sqlite3.connect(task_db)
    cr = db.cursor()
