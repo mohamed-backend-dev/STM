@@ -1,24 +1,26 @@
 {% extends "base.html" %}
 {% block body %}
-<h1>SMART TASK MANAGER</h1>
+<h1>مدير المهام الذكي</h1>
 <form method="POST" , action="/">
     <div class="user_name">
-        <label>user name</label>
-        <input type="text" name="user_name" placeholder="user name" required>
+        <label>اسم المستخدم</label>
+        <input type="text" name="user_name" placeholder="ادخل اسم المستخدم" required>
     </div>
     <br>
     <div class="user_password">
-        <label>user password</label>
-        <input type="password" name="user_password" placeholder="your password" required>
+        <label>كلمة المرور</label>
+        <input type="password" name="user_password" placeholder="ادخل كلمة المرور" required>
     </div>
     <div class="button">
-        <p><button type="submit">login</button></p>
+        <p><button type="submit">تسجيل الدخول</button></p>
     </div>
-    {% if the_name %}
-    <p>welcom to the smart task manager {{ the_name }}</p>
-    {% endif %}
-    <p>or</p>
-    <a href="/new_user"> CREATE NEW USER</a>
+    <a href="/new_user">حساب جديد</a>
 </form>
+{% if wrong %}
+<br>
+<p>لم يتم العثور على حساب مستخدم بهذه البيانات</p>
+<p>يبدوا ان هنالك خطاء في اسم المستخدم او كلمة المرور</p>
+<br>
+{% endif %}
 
 {% endblock %}

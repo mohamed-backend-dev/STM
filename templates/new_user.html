@@ -1,22 +1,30 @@
 {% extends 'base.html' %}
 {% block body %}
-<h2>NEW USERS PAGE</h2>
-<p>her you can create your new acount</p>
+<h2>المستخدمين الجدد</h2>
 <div>
     <form method="post" action="/new_user">
-        <label>inter your name</label>
-        <input type="text" name="new_user_name" placeholder="what should we call you" required autofocus>
+        <label>ادخل اسمك</label>
+        <input type="text" name="new_user_name" placeholder="ما هو اسمك" required autofocus>
         <br>
-        <label>inter your email</label>
-        <input type="email" name="new_user_email" placeholder="what is your email" required>
+        <label>ادخل بريدك الالكتروني</label>
+        <input type="email" name="new_user_email" placeholder="ما هو بريدك الالكتروني" required>
         <br>
-        <label>your password</label>
-        <input type="password" name="new_user_password" placeholder="DO NOT FORGET IT" required>
+        <label>كلمة المرور</label>
+        <input type="password" name="new_user_password" placeholder="لا تنساها" required>
         <br>
         <br>
-        <button type="submit">CREATE</button>
+        <button type="submit">انشاء</button>
         <br>
     </form>
 </div>
-<p>{{ user_already_exists }}</p>
+{% if wrong %}
+<br>
+<p>يبدوا ان اسم المستخدم او كلمة المرور او البريد الاكتروني مستخدم بالفعل</p>
+<p>ننصحك بتغيير هذه البيانات باخرى </p>
+<br>
+{% endif %}
+{% if yes %}
+<br>
+<p>تم انشاء الحساب بنجاح</p>
+{% endif %}
 {% endblock %}

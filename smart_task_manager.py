@@ -23,7 +23,7 @@ smart_task_manager.secret_key = "mohamed_2006"
 @smart_task_manager.route("/", methods = ["GET","POST"] )
 def login():
     session.clear()
-    the_name = None
+    wrong = None
     if request.method =="POST":
         user_name = request.form["user_name"]
         user_password = request.form["user_password"]
@@ -32,16 +32,19 @@ def login():
         cr.execute("select * from users where user_password = ? and user_name = ? ",(user_password, user_name))
         result = cr.fetchone()
         if result == None :
-            the_name = "this acount is not found"
+            wrong = "0"
             db.close()
         else:
+            wrong = None
             session["user_password"] = user_password
             db.close()
             return redirect(url_for('show_page'))
-    return render_template("login.html", the_name = the_name)
+    return render_template("login.html", wrong = wrong)
 # new user page
 @smart_task_manager.route("/new_user", methods = ["GET","POST"])
 def new_user():
+    wrong = None
+    yes = None
     if request.method == "POST":
         new_user_name = request.form["new_user_name"]
         new_user_email = request.form["new_user_email"]
@@ -51,13 +54,16 @@ def new_user():
         cr.execute("select user_password from users where user_name = ? or user_email = ?",(new_user_name, new_user_email))
         result = cr.fetchone()
         if result == None :
+            wrong = None
+            yes = "0"
             cr.execute(f"insert into users(user_password, user_name, user_email) values({new_user_password}, '{new_user_name}', '{new_user_email}')")
             db.commit()
             db.close()
         else:
-            user_already_exists = "user name or email is already taken"
+            wrong = '0'
+            yes = None
             db.close()
-    return render_template("new_user.html")
+    return render_template("new_user.html", wrong = wrong, yes = yes)
 @smart_task_manager.route("/show", methods = ["GET", "POST"])
 def show_page():
     if "user_password" not in session :

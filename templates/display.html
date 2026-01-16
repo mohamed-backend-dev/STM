@@ -1,9 +1,26 @@
 {% extends 'base.html' %}
 {% block body %}
-{% if all_tasks %}
-{% for fin in all_tasks %}
-<p> task : {{fin[0]}} | {{fin[1]}}</p>
-{% endfor %}
-{% endif %}
-<p><a href="{{url_for ('show_page')}}"> <- back to show page</a></p>
+
+<!-- CSS خاص بهذه الصفحة فقط -->
+<link rel="stylesheet" href="{{ url_for('static', filename='tasks_page.css') }}">
+
+<div class="tasks-page">
+
+    {% if all_tasks %}
+    {% for fin in all_tasks %}
+    <div class="task-card">
+        <span class="task-title">{{ fin[0] }}</span>
+        <span class="task-date">{{ fin[1] }}</span>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="empty">لا توجد مهام حالياً 🚀</p>
+    {% endif %}
+
+    <a class="back-link" href="{{ url_for('show_page') }}">
+        ← الرجوع
+    </a>
+
+</div>
+
 {% endblock %}
