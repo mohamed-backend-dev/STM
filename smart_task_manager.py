@@ -28,7 +28,7 @@ make_the_data_base()
 # ________________________
 # flask
 smart_task_manager = Flask(__name__)
-smart_task_manager.secret_key = "mohamed_2006"
+smart_task_manager.secret_key = os.environ.get("SECRET_KEY")
 # login page
 @smart_task_manager.route("/", methods = ["GET","POST"] )
 def login():
