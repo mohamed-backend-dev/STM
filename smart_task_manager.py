@@ -3,17 +3,9 @@ import sqlite3
 import datetime
 import os
 # make the data base
-import os
-import sqlite3
 
-db_dir = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(db_dir, "data_base")
+task_db = os.path.join("/tmp", "task.db")
 
-# إنشاء الفولدر إذا لم يكن موجودًا
-os.makedirs(db_path, exist_ok=True)
-
-# 
-task_db = os.path.join(db_path, "task.db") 
 
 
 def make_the_data_base():
@@ -119,4 +111,4 @@ if __name__ == "__main__":
     smart_task_manager.run(host="0.0.0.0", port=port)
     #first commit
     #new commit
-    #who is my code
+    # how is my code
